@@ -1,17 +1,18 @@
 {
 	"geode": "5.0.0-alpha.1",
 	"gd": {
-		"win": "2.2074",
-		"android": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074"
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"id": "pinkdev.geometry-proxy",
-	"name": "Geometry Proxy",
-	"version": "v1.0.0",
+	"name": "GProxy",
+	"version": "v1.0.1",
 	"developer": "PinkDev",
 	"description": "Well well well, theres only 2 reasons for you using this mod. One, You're ban evading, or two, you just wanna play geometry dash at school (me lol). So I didn't plan on releasing this publicly but yeah.",
 	"dependencies": {
 		"geode.node-ids": ">=v1.20.0"
 	}
 }
+
