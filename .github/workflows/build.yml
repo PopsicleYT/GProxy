@@ -1,0 +1,11 @@
+name: Build GProxy
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        uses: geode-sdk/build-geode-mod@main
