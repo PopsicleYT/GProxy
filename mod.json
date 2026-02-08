@@ -1,14 +1,16 @@
 {
-	"geode": "5.0.0-alpha.1",
-	"gd": {
-		"win": "2.2081",
-		"android": "2.2081",
-		"mac": "2.2081",
-		"ios": "2.2081"
-	},
-	"id": "pinkdev.gproxy",
-	"name": "GProxy",
-	"version": "v1.0.1",
-	"developer": "PinkDev",
-	"description": "Proxies all GD server requests through a custom server to bypass network restrictions"
+  "geode": "4.0.0",
+  "gd": {
+    "win": "2.2074",
+    "android": "2.2074",
+    "mac": "2.2074"
+  },
+  "id": "pinkdev.gproxy",
+  "name": "GProxy",
+  "version": "v1.0.0",
+  "developer": "PinkDev",
+  "description": "Redirects all GD server requests through a custom proxy server",
+  "dependencies": {
+    "smjs.gdintercept": ">=1.0.0"
+  }
 }
