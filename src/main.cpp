@@ -34,9 +34,4 @@ class $modify(MyGameLevelManager, GameLevelManager) {
         log::info("getOnlineLevels called!");
         GameLevelManager::getOnlineLevels(searchObj);
     }
-    
-    void downloadLevel(int levelID, bool unknown) {
-        log::info("downloadLevel called for ID: {}", levelID);
-        GameLevelManager::downloadLevel(levelID, unknown);
-    }
 };
