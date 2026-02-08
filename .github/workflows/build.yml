@@ -12,7 +12,7 @@ jobs:
         uses: geode-sdk/build-geode-mod@main
         
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: GProxy-mod
           path: build/*.geode
