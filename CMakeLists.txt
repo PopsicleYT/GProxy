@@ -21,3 +21,4 @@ setup_geode_mod(${PROJECT_NAME} EXTERNALS smjs.gdintercept:>=1.0.0)
 
 target_link_libraries(${PROJECT_NAME} PUBLIC smjs.gdintercept)
 
+
