@@ -1,5 +1,7 @@
 #include <Geode/Geode.hpp>
 #include <smjs.gdintercept/proxy/Proxy.hpp>
+#include <sstream>
+#include <iomanip>
 
 using namespace geode::prelude;
 using namespace proxy::prelude;
@@ -7,22 +9,21 @@ using namespace proxy::prelude;
 const std::string PROXY_BASE = "https://the.goon.lat/lumi/nal/";
 
 std::string urlEncode(const std::string& value) {
-    std::ostringstream escaped;
-    escaped.fill('0');
-    escaped << std::hex;
+    static const char hex[] = "0123456789ABCDEF";
+    std::string result;
+    result.reserve(value.size() * 3);
 
-    for (char c : value) {
+    for (unsigned char c : value) {
         if (isalnum(c) || c == '-' || c == '_' || c == '.' || c == '~') {
-            escaped << c;
-            continue;
+            result += c;
+        } else {
+            result += '%';
+            result += hex[c >> 4];
+            result += hex[c & 15];
         }
-
-        escaped << std::uppercase;
-        escaped << '%' << std::setw(2) << int((unsigned char) c);
-        escaped << std::nouppercase;
     }
 
-    return escaped.str();
+    return result;
 }
 
 $execute {
@@ -31,18 +32,19 @@ $execute {
     log::info("All GD server requests will be proxied to:");
     log::info("{}", PROXY_BASE);
     log::info("=================================");
-
+    
+    // Intercept all HTTP requests and redirect GD server URLs
     new EventListener([](RequestEvent* event) {
         auto& request = event->getRequest();
         std::string originalUrl = request.getURL().getRaw();
-
+        
         if (originalUrl.find("boomlings.com") != std::string::npos || 
             originalUrl.find("robtopgames.com") != std::string::npos ||
             originalUrl.find("geometrydashfiles.b-cdn.net") != std::string::npos) {
 
             std::string encodedUrl = urlEncode(originalUrl);
             std::string newUrl = PROXY_BASE + encodedUrl;
-            
+
             request.setURL(newUrl);
             
             log::info("REDIRECTED: {} -> {}", originalUrl, newUrl);
