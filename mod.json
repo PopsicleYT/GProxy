@@ -10,8 +10,11 @@
   "version": "v1.0.0",
   "developer": "PinkDev",
   "description": "Redirects all GD server requests through a custom proxy server",
-  "dependencies": {
-    "smjs.gdintercept": ">=1.0.0"
-  }
+  "dependencies": [
+    {
+      "id": "smjs.gdintercept",
+      "version": ">=1.0.0",
+      "importance": "required"
+    }
+  ]
 }
-
